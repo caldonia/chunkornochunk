@@ -1,0 +1,11 @@
+worlds:
+  world:
+    keepSpawnInMemory: false
+    preventNewChunks: true
+    preventChunkSave: true
+    keepLoaded:
+      area1:
+        x1: 0
+        z1: 0
+        x2: 1
+        z2: 1
