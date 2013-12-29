@@ -1,3 +1,3 @@
-name: PLUGINNAME
+name: chunkornochunk
 version: 0.0.1
-main: net.caldonia.bukkit.plugins.PLUGINNAME.Plugin
+main: net.caldonia.bukkit.plugins.chunkornochunk.ChunkOrNoChunk
