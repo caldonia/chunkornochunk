@@ -66,6 +66,10 @@ public class WorldHandler {
                 }
             }
         }
+
+        for (WorldArea worldArea : worldAreas.values()) {
+            worldArea.requestLoadOfArea(world);
+        }
     }
 
     public void chunkLoad(Chunk chunk, boolean isNew) {

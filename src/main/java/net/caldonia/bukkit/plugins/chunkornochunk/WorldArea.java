@@ -1,6 +1,7 @@
 package net.caldonia.bukkit.plugins.chunkornochunk;
 
 import org.bukkit.Chunk;
+import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 
@@ -46,5 +47,17 @@ public class WorldArea {
         int z = chunk.getZ();
 
         return (x >= x1 && x <= x2 && z >= z1 && z <= z2);
+    }
+
+    public void requestLoadOfArea(World world) {
+        for (int x = x1; x <= x2; x++) {
+            for (int z = z1; z <= z2; z++) {
+                Chunk chunk = world.getChunkAt(x, z);
+
+                if (!chunk.isLoaded()) {
+                    chunk.load();
+                }
+            }
+        }
     }
 }
