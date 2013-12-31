@@ -49,15 +49,18 @@ public class WorldArea {
         return (x >= x1 && x <= x2 && z >= z1 && z <= z2);
     }
 
-    public void requestLoadOfArea(World world) {
+    public int requestLoadOfArea(World world) {
+        int loadCount = 0;
+
         for (int x = x1; x <= x2; x++) {
             for (int z = z1; z <= z2; z++) {
-                Chunk chunk = world.getChunkAt(x, z);
+                System.out.println(x + "," + z);
 
-                if (!chunk.isLoaded()) {
-                    chunk.load();
-                }
+                Chunk chunk = world.getChunkAt(x, z);
+                loadCount++;
             }
         }
+
+        return loadCount;
     }
 }
