@@ -11,7 +11,6 @@ import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import sun.util.logging.PlatformLogger;
 
 import java.util.HashMap;
 import java.util.Map;
