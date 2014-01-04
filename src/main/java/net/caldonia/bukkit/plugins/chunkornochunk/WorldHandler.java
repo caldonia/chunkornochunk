@@ -66,7 +66,7 @@ public class WorldHandler {
 
                 // If we have to unload, unload it.
                 if (unload) {
-                    plugin.getLogger().info("World '" + worldName + "' unloading chunk " + chunk.getX() + "," + chunk.getZ() + ".");
+                    plugin.getLogger().fine("World '" + worldName + "' unloading chunk " + chunk.getX() + "," + chunk.getZ() + ".");
                     chunk.unload(!preventChunkSaves);
                 }
             }
@@ -81,7 +81,7 @@ public class WorldHandler {
     public void chunkLoad(Chunk chunk, boolean isNew) {
         // Unload the chunk if it's new.
         if (isNew && preventNewChunks) {
-            plugin.getLogger().info("World '" + worldName + "' preventing new chunk " + chunk.getX() + "," + chunk.getZ() + ".");
+            plugin.getLogger().fine("World '" + worldName + "' preventing new chunk " + chunk.getX() + "," + chunk.getZ() + ".");
 
             // Add to our list of chunks permitted to unload.
             safeUnloadingChunks.add(chunkToPoint(chunk));
@@ -94,7 +94,7 @@ public class WorldHandler {
         // First check to see if the chunk must remain loaded.
         for (WorldArea worldArea : worldAreas.values()) {
             if (worldArea.includesChunk(chunk)) {
-                plugin.getLogger().info("World '" + worldName + "' preventing chunk unload due to area '" + worldArea.getName() + "' for " + chunk.getX() + "," + chunk.getZ() + ".");
+                plugin.getLogger().fine("World '" + worldName + "' preventing chunk unload due to area '" + worldArea.getName() + "' for " + chunk.getX() + "," + chunk.getZ() + ".");
                 // Cancel the unload.
                 return true;
             }
@@ -105,7 +105,7 @@ public class WorldHandler {
 
         // If the chunk isn't in the safe list and we're preventing chunk saves.
         if (!safeUnloadingChunks.contains(point) && preventChunkSaves) {
-            plugin.getLogger().info("World '" + worldName + "' canceling unload to prevent save for " + chunk.getX() + "," + chunk.getZ() + ".");
+            plugin.getLogger().fine("World '" + worldName + "' canceling unload to prevent save for " + chunk.getX() + "," + chunk.getZ() + ".");
 
             // Add it save next time.
             safeUnloadingChunks.add(point);
@@ -120,7 +120,7 @@ public class WorldHandler {
         // Remove reference from safe list regardless of it being in or not.
         safeUnloadingChunks.remove(point);
 
-        plugin.getLogger().info("World '" + worldName + "' allowing unload for " + chunk.getX() + "," + chunk.getZ() + ".");
+        plugin.getLogger().fine("World '" + worldName + "' allowing unload for " + chunk.getX() + "," + chunk.getZ() + ".");
 
         // Don't cancel the unload.
         return false;

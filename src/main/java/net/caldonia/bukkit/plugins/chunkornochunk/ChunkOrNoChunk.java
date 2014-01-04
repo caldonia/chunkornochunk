@@ -11,9 +11,11 @@ import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import sun.util.logging.PlatformLogger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 public class ChunkOrNoChunk extends JavaPlugin implements Listener {
     private Map<String, WorldHandler> worldHandlers = new HashMap<String, WorldHandler>();
@@ -51,6 +53,12 @@ public class ChunkOrNoChunk extends JavaPlugin implements Listener {
         reloadConfig();
 
         Configuration root = getConfig();
+
+        Level newLevel = Level.parse(root.getString("logLevel", "INFO"));
+
+        if (newLevel != null) {
+            getLogger().setLevel(newLevel);
+        }
 
         if (!root.contains("worlds")) {
             getLogger().warning("Configuration does not contain worlds section.");
