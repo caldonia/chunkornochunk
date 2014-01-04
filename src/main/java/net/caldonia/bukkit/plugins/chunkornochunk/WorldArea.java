@@ -54,8 +54,6 @@ public class WorldArea {
 
         for (int x = x1; x <= x2; x++) {
             for (int z = z1; z <= z2; z++) {
-                System.out.println(x + "," + z);
-
                 Chunk chunk = world.getChunkAt(x, z);
                 loadCount++;
             }
