@@ -1,5 +1,5 @@
+logLevel: INFO
 worlds:
-  logLevel: INFO
   example:
     keepSpawnInMemory: false
     preventNewChunks: true
